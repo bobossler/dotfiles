@@ -1,0 +1,41 @@
+# Alias definitions
+# I am keeping them separate from my main .zshrc file for portability
+
+# some more ls aliases
+alias ll='ls -AlFh --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+
+# other useful aliases
+#
+# Reload zsh after changes to .zshrc or .zsh_aliases
+alias zreload='source ~/.zshrc'
+alias df='df -h'
+alias free='free -h'
+alias neo='neofetch'
+
+# Quick weather forecasts
+alias qf='curl wttr.in/60504'
+alias qford='curl wttr.in/ORD'
+alias qfmdw='curl wttr.in/MDW'
+
+# Doppler radar loops - ILX=Central IL, LOT=Chicago
+alias dopilx='curl -s https://radar.weather.gov/lite/N0R/ILX_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias doplot='curl -s https://radar.weather.gov/lite/N0R/LOT_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+
+# Nordvpn quick commands
+alias vpnc='nordvpn connect'
+alias vpnd='nordvpn disconnect'
+alias vpns='nordvpn status'
+
+# Add a fortune to the clear command
+alias clear='clear ; fortune'
+
+# Check Unicode support in terminal
+alias unisup='curl https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'
+
+# A few package aliases
+alias saupdate='sudo apt update'
+alias saupgrade='sudo apt upgrade'
+alias aptlistup='apt list --upgradeable'
+alias mydots='/usr/bin/git --git-dir=/home/bobossler/.dotfiles --work-tree=/home/bobossler'
