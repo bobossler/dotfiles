@@ -29,7 +29,11 @@ alias vpnd='nordvpn disconnect'
 alias vpns='nordvpn status'
 
 # Add a fortune to the clear command
-alias clear='clear ; fortune'
+alias clear='clear ; fortune | cowsay -w -n'
+
+# Gemini shortcuts
+alias gb='~/gemblog.sh'
+alias gf='~/gemfull.sh'
 
 # Check Unicode support in terminal
 alias unisup='curl https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'

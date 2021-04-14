@@ -1,9 +1,9 @@
 "
-"    ____        __  
-"   / __ )____  / /_ 
+"    ____        __
+"   / __ )____  / /_
 "  / __  / __ \/ __ \
 " / /_/ / /_/ / /_/ /
-"/_____/\____/_.___/ 
+"/_____/\____/_.___/
 "
 
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -30,7 +30,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " live preview for LaTeX
 " Plugins for writing
 Plug 'junegunn/goyo.vim'
-Plug 'dhruvasagar/vim-table-mode' 
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'robertbasic/vim-hugo-helper'
 Plug 'vimwiki/vimwiki'
 Plug 'tmsvg/pear-tree'
@@ -86,6 +86,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set scrolloff=8
 set splitbelow splitright
 set autoread
 set wildmenu
@@ -101,7 +102,7 @@ set foldlevel=99
 
 "Give more space for displaying messages.
 set cmdheight=2
-
+set signcolumn=yes
 set colorcolumn=80
 highlight colorcolumn ctermbg=0 guibg=lightgrey
 
@@ -114,12 +115,28 @@ endif
 colorscheme gruvbox
 set background=dark
 
+"Set .rasi filetype
+au BufNewFile,BufRead /*.rasi setf css
+
+"Trim white space
+fun! TrimWhiteSpace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
 "Flag Unneccessary Whitespace
 highlight BadWhitespace ctermbg=9 guibg=red
 augroup badwhitespace
     au!
     au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 augroup end
+
+"Remove Whitespace
+augroup RemoveWSP
+    autocmd!
+    autocmd BufWritePre * :call TrimWhiteSpace()
+augroup END
 
 "Special Indents
 augroup webindents
