@@ -1,22 +1,16 @@
 # Alias definitions
-# I am keeping them separate from my main .zshrc file for portability
+# I am keeping them separate from my main .bashrc file for portability
 
 # some more ls aliases
 alias ll='ls -AlFh --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
 
-# other useful aliases
-#
-# Reload zsh after changes to .zshrc or .zsh_aliases
-alias zreload='. ~/.zshrc'
-
 # Misc stuff
 alias df='df -h'
 alias free='free -h'
 alias myip="curl http://ipecho.net/plain; echo"
 alias neo='neofetch'
-alias mkdir='mkdir --parents --verbose'
 
 # Quick weather forecasts
 alias qf='curl wttr.in/60504'
@@ -46,15 +40,11 @@ alias hrzup='~/horizon-update.sh'
 # Play TheEL.US Radio Station
 alias radio='mpv --quiet "https://streaming.live365.com/a71722"'
 
-# Get tmux status for session/windows/panes
-alias tmuxst='tmux ls && tmux lsw -a && tmux lsp -a'
-
 # Check Unicode support in terminal
 alias unisup='curl https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'
 
 # A few package aliases
 alias saupdate='sudo apt update'
 alias saupgrade='sudo apt upgrade'
-alias aptup='sudo apt update && sudo apt upgrade'
 alias aptlistup='apt list --upgradeable'
 alias mydots='/usr/bin/git --git-dir=/home/bobossler/.dotfiles --work-tree=/home/bobossler'

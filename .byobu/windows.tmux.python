@@ -1,0 +1,7 @@
+new-session -s Python -n Home -c /home/bobossler/ ;
+new-window -n Code -c /home/bobossler/Projects/python/ ;
+new-window -n Testing -c /home/bobossler/Projects/python/ltcwbb/ ;
+select-window -t Home ;
+send-keys -t Code "ranger" Enter ;
+send-keys -t Testing "htop" Enter ;
+send-keys -t Home "df" Enter

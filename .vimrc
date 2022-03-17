@@ -18,26 +18,34 @@ call plug#begin('~/.vim/plugged')       " call plugin manager; plugins start bel
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
-" Plug 'kristijanhusak/vim-hybrid-material'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'ajh17/Spacegray.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " live preview for LaTeX
 " Plugins for writing
 Plug 'junegunn/goyo.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'robertbasic/vim-hugo-helper'
-Plug 'vimwiki/vimwiki'
+Plug 'reedes/vim-pencil'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " live preview for LaTeX
 Plug 'tmsvg/pear-tree'
 Plug 'ap/vim-css-color'
-" Plug 'reedes/vim-pencil'
+Plug 'rust-lang/rust.vim'
+" Plugins for terminal usage
+Plug 'voldikss/vim-floaterm'
+" Unused Plugins (for the moment)
+"    Color schemes
+" Plug 'kristijanhusak/vim-hybrid-material'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'ajh17/Spacegray.vim'
+"    Writing
+" Plug 'vimwiki/vimwiki'
+" Plug 'tools-life/taskwiki'
 " Plug 'godlygeek/tabular'
 " Plug 'plasticboy/vim-markdown'
+"    Formatting
 " Plug 'alvan/vim-closetag'
 " Plug 'jiangmiao/auto-pairs'
 
@@ -69,6 +77,26 @@ let NERDTreeNaturalSort = 1
 let NERDTreeRespectWildIgnore = 1
 let NERDTreeMinimalUI = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""
+"  VimWiki settings                           "
+"""""""""""""""""""""""""""""""""""""""""""""""
+" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_ext2syntax = {'md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+" Makes vimwiki markdown links as [text](text.md) instead of [text](text)
+" let g:vimwiki_markdown_link_ext = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"  TaskWiki settings                          "
+"""""""""""""""""""""""""""""""""""""""""""""""
+" let g:taskwiki_markup_syntax = 'markdown'
+" let g:markdown_folding = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"  Floaterm settings                          "
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:floaterm_keymap_toggle = '<F10>'
+let g:floaterm_keymap_kill = '<Leader>fk'
+
 syntax enable
 
 set encoding=utf-8
@@ -93,14 +121,14 @@ set wildmenu
 set nohlsearch
 set spelllang=en_us
 set termguicolors
-"set spell
-"set confirm
+" set spell
+" set confirm
 
-"Enable Folding
+" Enable Folding
 set foldmethod=indent
 set foldlevel=99
 
-"Give more space for displaying messages.
+" Give more space for displaying messages.
 set cmdheight=2
 set signcolumn=yes
 set colorcolumn=80
@@ -111,44 +139,57 @@ if exists('+termguicolors')
     let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-"Color Scheme
+" Color Scheme
 colorscheme gruvbox
 set background=dark
 
-"Set .rasi filetype
+" Set .rasi filetype
 au BufNewFile,BufRead /*.rasi setf css
 
-"Trim white space
+" Trim white space
 fun! TrimWhiteSpace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
 
-"Flag Unneccessary Whitespace
+" Flag Unneccessary Whitespace
 highlight BadWhitespace ctermbg=9 guibg=red
 augroup badwhitespace
     au!
     au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 augroup end
 
-"Remove Whitespace
+" Remove Whitespace
 augroup RemoveWSP
     autocmd!
-    autocmd BufWritePre * :call TrimWhiteSpace()
-augroup END
+    autocmd BufWritePre *.py,*.pyw,*.c,*.h :call TrimWhiteSpace()
+augroup end
 
-"Special Indents
+" Special Indents
+augroup pyindents
+    au!
+    au BufNewFile,BufRead *.py set ts=4 sts=4 sw=4
+        \ textwidth=79
+        \ expandtab
+        \ autoindent
+        \ fileformat=unix
+augroup end
+
 augroup webindents
     au!
     au BufNewFile,BufRead *.js,*.html,*.css set ts=2 sts=2 sw=2
 augroup end
 
-"Set line number mode based on vim mode
+" Set line number mode based on vim mode
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup end
 
-
+" Keyboard mapping
+imap <F5> <ESC>:w<CR>:! clear; python3 %<CR>
+nmap <F5> <ESC>:w<CR>:! clear; python3 %<CR>
+nmap <Leader>ft :FloatermNew --name=python --wintype=vsplit python3<CR>
+vmap <F9> :FloatermSend --name=python<CR><F10>

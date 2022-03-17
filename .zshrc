@@ -1,8 +1,8 @@
 # Set up the prompt
 
-autoload -Uz promptinit
-promptinit
-prompt adam1
+#autoload -Uz promptinit
+#promptinit
+#prompt adam1 red yellow magenta
 
 setopt histignorealldups sharehistory
 
@@ -41,11 +41,15 @@ if [[ "$TERM" != "dumb" ]]; then
     fi
 fi
 
+# Setup some static named directories
+# In effect, creating shortcuts to long path names
+hash -d acmedir=~/Projects/hugosite/acme-corporation
+hash -d grampsdir=~/Projects/gramps
+
 # Alias definitions.
 # I have my additional aliases in a separate file named
 # ~/.zsh_aliases, instead of adding them here directly.
 # This makes them more portable.
-
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
@@ -56,7 +60,7 @@ zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
 
-eval "$(dircolors -b)" 
+eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 
@@ -72,6 +76,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Neofetch is a cool tool for dislaying system info
 # turning it off while i research an issue
@@ -80,6 +85,21 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # display a Fortune upon opening a new terminal session
 # also using cowsay/cowthink for fun
 fortune | cowthink -w -n
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/bobossler/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/bobossler/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/bobossler/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/bobossler/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 # adding a line for the Starship prompt
 # might want to disable the prompt stuff at the top of this file

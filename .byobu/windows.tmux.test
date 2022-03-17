@@ -1,0 +1,4 @@
+new-session 'python' ;
+new-window -n code ;
+new-window -n testing ;
+select-pane -t 0
