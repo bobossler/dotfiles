@@ -7,6 +7,7 @@ alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
 
 # Misc stuff
+alias cm='cm.sh'   #cmatrix with random color
 alias df='df -h'
 alias free='free -h'
 alias myip="curl http://ipecho.net/plain; echo"

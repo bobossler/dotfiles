@@ -33,6 +33,7 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " live preview for LaTeX
 Plug 'tmsvg/pear-tree'
 Plug 'ap/vim-css-color'
 Plug 'rust-lang/rust.vim'
+Plug 'ycm-core/YouCompleteMe'
 " Plugins for terminal usage
 Plug 'voldikss/vim-floaterm'
 " Unused Plugins (for the moment)

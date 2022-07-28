@@ -12,6 +12,7 @@ alias l='ls -CF --color=auto'
 alias zreload='. ~/.zshrc'
 
 # Misc stuff
+alias cm='cm.sh'   #cmatrix with random colors
 alias df='df -h'
 alias free='free -h'
 alias myip="curl http://ipecho.net/plain; echo"
