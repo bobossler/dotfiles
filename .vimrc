@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')       " call plugin manager; plugins start bel
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', {'as':'dracula'}
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'

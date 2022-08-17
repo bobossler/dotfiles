@@ -18,7 +18,7 @@ local theme                                     = {}
 theme.zenburn_dir                               = require("awful.util").get_themes_dir() .. "zenburn"
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "ProductSans-Medium 10.5"
+theme.font                                      = "Roboto Bold 12"
 theme.fg_normal                                 = "#e2ccb0"
 theme.fg_focus                                  = "#d88166"
 theme.fg_urgent                                 = "#CC9393"
@@ -89,7 +89,7 @@ mytextclock.font = theme.font
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     notification_preset = {
-        font = "Terminus 11",
+        font = "Roboto 11",
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
@@ -207,7 +207,7 @@ theme.weather = lain.widget.weather({
 })
 
 -- Separators
-local first = wibox.widget.textbox(markup.font("ProductSans-Regular 4", " "))
+local first = wibox.widget.textbox(markup.font("Roboto 4", " "))
 local spr   = wibox.widget.textbox(' ')
 
 local function update_txt_layoutbox(s)

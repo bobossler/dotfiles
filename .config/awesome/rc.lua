@@ -270,7 +270,7 @@ globalkeys = mytable.join(
               {description = "destroy all notifications", group = "hotkeys"}),
     -- Take a screenshot
     -- https://github.com/lcpz/dots/blob/master/bin/screenshot
-    awful.key({ altkey }, "p", function() os.execute("flameshot gui") end,
+    awful.key({ altkey }, "p", function() os.execute("flameshot gui -p /home/bobossler/Pictures/Screenshots") end,
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
@@ -541,7 +541,7 @@ globalkeys = mytable.join(
     -- check https://github.com/DaveDavenport/rofi for more details
     -- rofi
     awful.key({ modkey }, "x", function ()
-            os.execute(string.format("rofi -show %s", 'run'))
+            os.execute(string.format("rofi -show %s", 'drun'))
         end,
         {description = "show rofi", group = "launcher"}),
     --
@@ -815,7 +815,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- my autostart programs
-awful.spawn.with_shell("picom --experimental-backends")
+awful.spawn.with_shell("picom -b --experimental-backends")
 awful.spawn.with_shell("ibus-daemon -drx")
-awful.spawn.with_shell("flameshot")
+--awful.spawn.with_shell("flameshot &")
 
