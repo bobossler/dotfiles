@@ -274,8 +274,12 @@ globalkeys = mytable.join(
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute("sleep 1; xset dpms force off; sleep 20; slock") end,
+    awful.key({ altkey, "Control" }, "l", function () os.execute("i3lock -c 898e8c -e -f && xset dpms force off") end,
               {description = "lock screen", group = "hotkeys"}),
+
+    -- Rofi power menu
+    awful.key({ modkey,           }, "p", function () os.execute("powermenu.sh") end,
+              {description = "rofi power menu", group = "hotkeys"}),
 
     -- Show help
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -815,7 +819,10 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- my autostart programs
-awful.spawn.with_shell("picom -b --experimental-backends")
-awful.spawn.with_shell("ibus-daemon -drx")
---awful.spawn.with_shell("flameshot &")
+-- changing to running an autorun script instead of
+-- listing applications here
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
+-- awful.spawn.with_shell("picom -b --experimental-backends")
+-- awful.spawn.with_shell("ibus-daemon -drx")
+-- awful.spawn.with_shell("flameshot &")
 
