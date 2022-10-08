@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function run {
+function runme {
   if ! pgrep -f $1 ;
   then
     $@&
@@ -8,13 +8,14 @@ function run {
 }
 
 #run /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-run nm-applet
+runme nm-applet
 #run parcellite
 #run clipmenud
 #run volctl
 #run ~/.config/conky/start_conky ~/.config/conky/MX-CoreBlue/conkyrc2core 
 #run remmina -i
-run picom --experimental-backends --config $HOME/.config/picom/picom.conf
-run ibus-daemon -drx
+runme picom --experimental-backends --config $HOME/.config/picom/picom.conf
 if ! pgrep -f deja-dup-mon; then flatpak run --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup; fi
-#run mpv --no-video ~/.config/awesome/fishlive/sounds/startup-snd-1.mp3
+if ! pgrep -f ibus-daemon; then ibus-daemon -drx; fi
+mpv --no-video /usr/share/sounds/freedesktop/stereo/service-login.oga
+

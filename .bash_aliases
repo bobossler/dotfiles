@@ -2,9 +2,17 @@
 # I am keeping them separate from my main .bashrc file for portability
 
 # some more ls aliases
-alias ll='ls -AlFh --color=auto'
-alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
+# alias ll='ls -AlFh --color=auto'
+# alias la='ls -A --color=auto'
+# alias l='ls -CF --color=auto'
+
+# trying out exa as a replacement for ls
+alias ls='exa -al --color=always --group-directories-first'  # preferred
+alias la='exa -a --color=always --group-directories-first'   # all files & dirs
+alias ll='exa -l --color=always --group-directories-first'   # long list
+alias lt='exa -aT --color=always --group-directories-first'  # tree list
+alias l.='exa -a | egrep "^\."'                              # only dots
+alias lr='exa -alr --sort=modified --color=always'           # reverse by modified
 
 # Misc stuff
 alias cm='cm.sh'   #cmatrix with random color
