@@ -116,6 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# display a Fortune upon opening a new terminal session
+# also using cowsay/cowthink for fun
+fortune | cowthink -w -n
+
+# display a random colorscript
+colorscript random
+
 # adding a line for the Starship prompt
 # may want to comment out the prompt settings above
 eval "$(starship init bash)"

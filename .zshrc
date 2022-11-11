@@ -86,6 +86,9 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # also using cowsay/cowthink for fun
 fortune | cowthink -w -n
 
+# display a random colorscript
+colorscript random
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 #__conda_setup="$('/home/bobossler/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

@@ -35,6 +35,7 @@ Plug 'tmsvg/pear-tree'
 Plug 'ap/vim-css-color'
 Plug 'rust-lang/rust.vim'
 Plug 'ycm-core/YouCompleteMe'
+Plug 'chrisbra/unicode.vim'
 " Plugins for terminal usage
 Plug 'voldikss/vim-floaterm'
 " Unused Plugins (for the moment)
