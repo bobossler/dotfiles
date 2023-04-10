@@ -18,7 +18,7 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
 #set background
 if [ -x "$(command -v feh)" ]; then
-  feh --bg-scale "$SCRIPTPATH"/background.jpg
+  feh --bg-scale --randomize ~/.wallpapers/*
 fi
 
 index=0

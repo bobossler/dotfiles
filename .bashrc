@@ -19,6 +19,9 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# set pager for man
+export MANPAGER='most'
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
