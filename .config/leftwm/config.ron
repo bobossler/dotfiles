@@ -13,8 +13,8 @@
     mousekey: "Mod4",
     workspaces: [],
     tags: [
-        "Term",
-        "Browse",
+        "1",
+        "2",
         "3",
         "4",
         "5",
@@ -48,6 +48,7 @@
       // spawn Firefox on tag 2
       ( window_class: "firefox", spawn_on_tag: 2 ),
       ( window_class: "music", spawn_on_tag: 5 ),
+      ( window_class: "evolution-alarm-notify", spawn_floating: true ),
     ],
     layout_mode: Workspace,
     disable_current_tag_swap: false,
@@ -55,7 +56,7 @@
     disable_window_snap: true,
     focus_behaviour: Sloppy,
     focus_new_windows: true,
-    single_window_border: true,
+    single_window_border: false,
     sloppy_mouse_follows_focus: true,
     keybind: [
         (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "x"),

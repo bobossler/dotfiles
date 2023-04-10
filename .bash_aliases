@@ -22,9 +22,9 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias neo='neofetch'
 
 # Quick weather forecasts
-alias qf='curl wttr.in/60504'
-alias qford='curl wttr.in/ORD'
-alias qfmdw='curl wttr.in/MDW'
+alias qf='curl wttr.in/60504?u'
+alias qford='curl wttr.in/ORD?u'
+alias qfmdw='curl wttr.in/MDW?u'
 alias qmoon='curl wttr.in/moon'
 
 # Doppler radar loops - ILX=Central IL, LOT=Chicago
@@ -35,6 +35,7 @@ alias doplot='curl -s https://radar.weather.gov/ridge/lite/KLOT_loop.gif >! /tmp
 alias vpnc='nordvpn connect'
 alias vpnd='nordvpn disconnect'
 alias vpns='nordvpn status'
+alias emacs="emacsclient -c -a 'emacs'&"
 
 # Add a fortune to the clear command
 alias clear='clear ; fortune | cowsay -w -n'

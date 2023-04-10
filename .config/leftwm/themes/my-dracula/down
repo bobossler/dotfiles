@@ -9,6 +9,8 @@ fi
 
 leftwm-command "UnloadTheme"
 
+pkill emacs
+pkill conky
 pkill picom
 pkill polybar
 #pkill nm-applet

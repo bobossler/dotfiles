@@ -76,7 +76,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Neofetch is a cool tool for dislaying system info
 # turning it off while i research an issue
@@ -88,21 +88,6 @@ fortune | cowthink -w -n
 
 # display a random colorscript
 colorscript random
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/bobossler/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/home/bobossler/anaconda3/etc/profile.d/conda.sh" ]; then
-#        . "/home/bobossler/anaconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/home/bobossler/anaconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
-# <<< conda initialize <<<
 
 # adding a line for the Starship prompt
 # might want to disable the prompt stuff at the top of this file

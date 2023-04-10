@@ -34,13 +34,16 @@ alias qfmdw='curl wttr.in/MDW'
 alias qmoon='curl wttr.in/moon'
 
 # Doppler radar loops - ILX=Central IL, LOT=Chicago
-alias dopilx='curl -s https://radar.weather.gov/ridge/lite/KILX_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
-alias doplot='curl -s https://radar.weather.gov/ridge/lite/KLOT_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias dopconus='curl -s https://radar.weather.gov/ridge/standard/CONUS_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias dopilx='curl -s https://radar.weather.gov/ridge/standard/KILX_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias doplot='curl -s https://radar.weather.gov/ridge/standard/KLOT_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias doppah='curl -s https://radar.weather.gov/ridge/standard/KPAH_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
 
 # Nordvpn quick commands
 alias vpnc='nordvpn connect'
 alias vpnd='nordvpn disconnect'
 alias vpns='nordvpn status'
+alias emacs="emacsclient -c -a 'emacs'&"
 
 # Add a fortune to the clear command
 alias clear='clear ; fortune | cowsay -w -n'
@@ -60,6 +63,17 @@ alias tmuxst='tmux ls && tmux lsw -a && tmux lsp -a'
 
 # Check Unicode support in terminal
 alias unisup='curl https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'
+
+# enable/disable Pop Shop
+alias popshopoff='
+sed -i "s/X-GNOME-Autostart-enabled=true/X-GNOME-Autostart-enabled=false/" /home/$USER/.config/autostart/io.elementary.appcenter-daemon.desktop
+echo "Pop Shop disabled"
+killall io.elementary.appcenter'
+
+alias popshopon='
+sed -i "s/X-GNOME-Autostart-enabled=false/X-GNOME-Autostart-enabled=true/" /home/$USER/.config/autostart/io.elementary.appcenter-daemon.desktop
+echo "Pop Shop enabled"
+nohup io.elementary.appcenter -s >/dev/null 2>&1 &'
 
 # A few package aliases
 alias saupdate='sudo apt update'

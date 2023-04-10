@@ -10,8 +10,11 @@ ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
 # my config changes
 picom --experimental-backends --config /home/bobossler/.config/picom/picom.conf &
+/usr/bin/emacs --daemon &
 #flatpak run --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup 
 
+# start conky
+conky -c /home/bobossler/.config/conky/leftwm/doom-one-01.conkyrc &
 
 #set the theme.ron config
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"

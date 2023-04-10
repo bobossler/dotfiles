@@ -107,7 +107,7 @@ local editor       = os.getenv("EDITOR") or "vim"
 local browser      = "firefox"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "Term", "Browse", "Misc", "Scratch", "Music" }
+awful.util.tagnames = { "DEV", "WWW", "SYS", "DOC", "MUS", "VID" }
 awful.layout.layouts = {
     --awful.layout.suit.floating,
     awful.layout.suit.tile,
@@ -742,9 +742,9 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
 
-    -- Set Spotify to always map to tag "Spotify" on screen 1
+    -- Set Spotify to always map to tag "Music" on screen 1
     { rule = { class = "Spotify" },
-      properties = { screen = 1, tag = "Music" }
+      properties = { screen = 1, tag = "MUS" }
     },
 }
 

@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+export PATH="$PATH:$HOME/.emacs.d/doom/bin"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -131,20 +133,5 @@ colorscript random
 eval "$(starship init bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/bobossler/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/bobossler/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/bobossler/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/bobossler/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 . "$HOME/.cargo/env"
