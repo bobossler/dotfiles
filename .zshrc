@@ -92,3 +92,4 @@ colorscript random
 # adding a line for the Starship prompt
 # might want to disable the prompt stuff at the top of this file
 eval "$(starship init zsh)"
+

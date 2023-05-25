@@ -80,7 +80,8 @@ keys = [
     Key([mod, "shift"], "r", lazy.reload_config(), desc='Reload the config'),
     Key([mod, "control"], "r", lazy.restart, desc='Restart Qtile'),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([], 'F11', lazy.group['sp'].dropdown_toggle('term'))
+    Key([], 'F11', lazy.group['sp1'].dropdown_toggle('mc')),
+    Key([], 'F12', lazy.group['sp2'].dropdown_toggle('ranger'))
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
@@ -91,10 +92,12 @@ groups = [Group("1"),
           Group("5", matches=[Match(wm_class=["spotify"])]),
           Group("6"),
           Group("7"),
-          Group("8"),
+          Group("8", matches=[Match(wm_class=["mpv"])]),
           Group("9"),
-          ScratchPad("sp", [
-              DropDown("term", "alacritty", height=0.6, opacity=1) ])
+          ScratchPad("sp1", [
+              DropDown("mc", "alacritty -e 'mc'", height=0.6, opacity=1) ]),
+          ScratchPad("sp2", [
+              DropDown("ranger", "alacritty -e 'ranger'", height=0.6, opacity=1) ])
          ]
 
 for i in groups:
@@ -124,7 +127,7 @@ for i in groups:
         break
 
 colors = [
-    ["#282c34", "#282c34"],
+    ["#282a36", "#282a36"],
     ["#1c1f24", "#1c1f24"],
     ["#dfdfdf", "#dfdfdf"],
     ["#ff6c6b", "#ff6c6b"],
@@ -139,8 +142,8 @@ colors = [
 layout_theme = {
         "border_width": 2,
         "margin": 8,
-        "border_focus": "e1acff",
-        "border_normal": "1d2330"
+        "border_focus": "#bd93f9",
+        "border_normal": "#1d2330"
         }
 
 layouts = [
@@ -149,7 +152,7 @@ layouts = [
     layout.Stack(num_stacks=2),
     layout.RatioTile(**layout_theme),
     layout.TreeTab(
-        font = "Ubuntu",
+        font = "Hack Nerd Font Mono",
         fontsize = 14,
         sections = ["FIRST", "SECOND", "THIRD", "FOURTH"],
         section_fontsize = 12,
@@ -181,8 +184,10 @@ layouts = [
 
 widget_defaults = dict(
     #font = "Ubuntu Bold",
-    font = "JetBrainsMono Nerd Font",
+    font = "JetBrainsMono Nerd Font Bold",
     #font = "FontAwesome",
+    #font = "Inconsolata Nerd Font Mono",
+    #font = "Hack Nerd Font Mono Bold",
     fontsize = 16,
     padding = 2,
     backgound = colors[2]
@@ -245,8 +250,8 @@ screens = [
                     linewidth = 2,
                     padding = 4
                 ),
-                widget.ThermalZone(
-                    zone = '/sys/class/thermal/thermal_zone4/temp'
+                widget.ThermalSensor(
+                    tag_sensor = 'Core 0'
                 ),
                 widget.Sep(
                     linewidth = 2,
@@ -261,24 +266,24 @@ screens = [
                 widget.Systray(),
                 widget.QuickExit(default_text='[X]', countdown_format='[{}]'),
             ],
-            background='#1e1f29',
+            background='#282a36',
             opacity=0.80,
             size=28
         ),
     ),
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 4
+                #widget.WindowName(),
+                widget.Spacer(
+                    length = bar.STRETCH
                 ),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p",
-                    foreground = colors[4]
+                    foreground = colors[8],
+                    padding = 8
                 ),
                 widget.Sep(
                     linewidth = 2,
@@ -290,48 +295,56 @@ screens = [
                     foreground = colors[8],
                     format = '{location_city}: {icon} {temp}{units_temperature} {wind_speed} {units_wind_speed} {wind_direction}',
                     metric = False,
+                    padding = 8,
                     update_interval = 1800,
                     zip = 60504
                 ),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 4
-                ),
-                widget.CPU(
-                    background = colors[5],
-                    foreground = colors[0],
-                    format = 'CPU:{load_percent}%'
+                widget.Spacer(
+                    length = bar.STRETCH
                 ),
                 widget.Sep(
                     linewidth = 2,
                     padding = 4
                 ),
-                widget.Memory(
-                    background = colors[4],
-                    foreground = colors[0],
-                    fmt = 'Mem:{}',
-                    format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
-                    measure_mem = 'G'
+                #widget.CPU(
+                #    background = colors[5],
+                #    foreground = colors[0],
+                #    format = 'CPU:{load_percent}%'
+                #),
+                #widget.Sep(
+                #    linewidth = 2,
+                #    padding = 4
+                #),
+                #widget.Memory(
+                #    background = colors[4],
+                #    foreground = colors[0],
+                #    fmt = 'Mem:{}',
+                #    format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
+                #    measure_mem = 'G'
+                #),
+                #widget.Sep(
+                #    linewidth = 2,
+                #    padding = 4
+                #),
+                widget.ThermalSensor(
+                    tag_sensor = 'Core 1',
+                    foreground = colors[8],
+                    format = '{tag}: {temp:.0f}{unit}',
+                    padding = 8,
                 ),
                 widget.Sep(
                     linewidth = 2,
                     padding = 4
                 ),
-                widget.CapsNumLockIndicator(),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 4
-                ),
-                widget.ThermalZone(
-                    zone = '/sys/class/thermal/thermal_zone4/temp'
-                ),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 4
-                ),
+                #widget.CapsNumLockIndicator(),
+                #widget.Sep(
+                #    linewidth = 2,
+                #    padding = 4
+                #),
                 widget.DF(warn_space=99),
                 widget.QuickExit(default_text='[X]', countdown_format='[{}]'),
             ],
+            background='#282a36',
             opacity=0.80,
             size=24
         ),
@@ -358,6 +371,7 @@ floating_layout = layout.Floating(
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(wm_class="mpv"),  # mpv
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ]

@@ -12,14 +12,14 @@ picom --experimental-backends --config ~/.config/picom/picom.conf &
 /usr/bin/emacs --daemon &
 
 # start conky
-conky -c ~/.config/conky/qtile/doom-one-01.conkyrc
+conky -c ~/.config/conky/qtile/doom-one-01.conkyrc &
 
 # start the network manager
 nm-applet &
 
 # start the DejaDup application
-flatpak run org.gnome.DejaDup &
+flatpak run --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup &
 
 # start xfce-power-manager for screen power saving
-xfce-power-manager --daemon
+xfce4-power-manager --daemon &
 
