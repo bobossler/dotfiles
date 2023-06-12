@@ -198,17 +198,17 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
+                widget.CurrentLayoutIcon(
+                    background = colors[1],
+                    scale = 0.6
+                ),
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 4
+                widget.Spacer(
+                    length = bar.STRETCH
                 ),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p",
-                    #foreground = '#e53935'
-                    foreground = colors[4]
+                    foreground = colors[8]
                 ),
                 #widget.TextBox("default config", name="default"),
                 #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
@@ -223,58 +223,52 @@ screens = [
                     foreground = colors[8],
                     format = '{location_city}: {icon} {temp}{units_temperature} {wind_speed} {units_wind_speed} {wind_direction}',
                     metric = False,
+                    padding = 8,
                     update_interval = 1800,
                     zip = 60504
                 ),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 4
-                ),
-                widget.CPU(
-                    background = colors[5],
-                    foreground = colors[0],
-                    format = 'CPU:{load_percent}%'
-                ),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 4
-                ),
-                widget.Memory(
-                    background = colors[4],
-                    foreground = colors[0],
-                    fmt = 'Mem:{}',
-                    format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
-                    measure_mem = 'G'
+                widget.Spacer(
+                    length = bar.STRETCH
                 ),
                 widget.Sep(
                     linewidth = 2,
                     padding = 4
                 ),
                 widget.ThermalSensor(
-                    tag_sensor = 'Core 0'
+                    tag_sensor = 'Core 0',
+                    foreground = colors[8],
+                    format = '{tag}: {temp:.0f}{unit}',
+                    padding = 8
                 ),
                 widget.Sep(
                     linewidth = 2,
                     padding = 4
                 ),
                 widget.DF(warn_space=99),
-                widget.CapsNumLockIndicator(),
                 widget.Sep(
                     linewidth = 2,
                     padding = 4
                 ),
                 widget.Systray(),
-                widget.QuickExit(default_text='[X]', countdown_format='[{}]'),
+                widget.QuickExit(
+                    background = colors[1],
+                    default_text='[X]',
+                    fontsize = 12,
+                    countdown_format='[{}]'
+                ),
             ],
-            background='#282a36',
-            opacity=0.80,
-            size=28
+            background = colors[0],
+            opacity = 0.85,
+            size = 28
         ),
     ),
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
+                widget.CurrentLayoutIcon(
+                    background = colors[1],
+                    scale = 0.6
+                ),
                 widget.GroupBox(),
                 widget.Prompt(),
                 #widget.WindowName(),
@@ -326,6 +320,14 @@ screens = [
                 #    linewidth = 2,
                 #    padding = 4
                 #),
+                widget.Mpris2(
+                    max_chars = 36,
+                    padding = 8
+                ),
+                widget.Sep(
+                    linewidth = 2,
+                    padding = 4
+                ),
                 widget.ThermalSensor(
                     tag_sensor = 'Core 1',
                     foreground = colors[8],
@@ -342,10 +344,15 @@ screens = [
                 #    padding = 4
                 #),
                 widget.DF(warn_space=99),
-                widget.QuickExit(default_text='[X]', countdown_format='[{}]'),
+                widget.QuickExit(
+                    background = colors[1],
+                    default_text='[X]',
+                    fontsize = 12,
+                    countdown_format='[{}]'
+                ),
             ],
-            background='#282a36',
-            opacity=0.80,
+            background=colors[0],
+            opacity=0.85,
             size=24
         ),
     )
