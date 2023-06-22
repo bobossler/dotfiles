@@ -320,14 +320,14 @@ screens = [
                 #    linewidth = 2,
                 #    padding = 4
                 #),
-                widget.Mpris2(
-                    max_chars = 36,
-                    padding = 8
-                ),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 4
-                ),
+                #widget.Mpris2(
+                #    max_chars = 36,
+                #    padding = 8
+                #),
+                #widget.Sep(
+                #    linewidth = 2,
+                #    padding = 4
+                #),
                 widget.ThermalSensor(
                     tag_sensor = 'Core 1',
                     foreground = colors[8],
