@@ -7,12 +7,12 @@
 # alias l='ls -CF --color=auto'
 
 # trying out exa as a replacement for ls
-alias ls='exa -al --color=always --group-directories-first'  # preferred
-alias la='exa -a --color=always --group-directories-first'   # all files & dirs
-alias ll='exa -l --color=always --group-directories-first'   # long list
-alias lt='exa -aT --color=always --group-directories-first'  # tree list
-alias l.='exa -a | egrep "^\."'                              # only dots
-alias lr='exa -al -s newest --color=always'           # reverse by modified
+alias ls='exa -al --icons --color=always --group-directories-first'  # preferred
+alias la='exa -a --icons --color=always --group-directories-first'   # all files & dirs
+alias ll='exa -l --icons --color=always --group-directories-first'   # long list
+alias lt='exa -aT --icons --color=always --group-directories-first'  # tree list
+alias l.='exa -a | egrep "^\."'                                      # only dots
+alias lr='exa -al -s newest --icons --color=always'                  # reverse by modified
 
 # other useful aliases
 #
@@ -81,6 +81,7 @@ alias saupgrade='sudo apt upgrade'
 alias aptup='sudo apt update && sudo apt upgrade'
 alias aptlistup='apt list --upgradeable'
 alias mydots='/usr/bin/git --git-dir=/home/bobossler/.dotfiles --work-tree=/home/bobossler'
+alias nalaup='sudo nala update && sudo nala upgrade'
 alias nalaupd='sudo nala update && nala list --upgradeable'
 alias nalaupg='sudo nala upgrade'
 alias nalaar='sudo nala autoremove'

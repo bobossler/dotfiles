@@ -17,6 +17,9 @@ conky -c ~/.config/conky/qtile/doom-one-01.conkyrc &
 # start the network manager
 nm-applet &
 
+# start flameshot for screenshots
+flameshot &
+
 # start the DejaDup application
 flatpak run --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup &
 

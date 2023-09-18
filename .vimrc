@@ -143,7 +143,8 @@ if exists('+termguicolors')
 endif
 
 " Color Scheme
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme dracula
 set background=dark
 
 " Set .rasi filetype
