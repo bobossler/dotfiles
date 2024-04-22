@@ -126,7 +126,7 @@ fi
 fortune | cowthink -w -n
 
 # display a random colorscript
-colorscript random
+#colorscript random
 
 # adding a line for the Starship prompt
 # may want to comment out the prompt settings above

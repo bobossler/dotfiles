@@ -33,8 +33,11 @@ Plug 'reedes/vim-pencil'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " live preview for LaTeX
 Plug 'tmsvg/pear-tree'
 Plug 'ap/vim-css-color'
+" Plugins for Rust
 Plug 'rust-lang/rust.vim'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+" Plug 'ycm-core/YouCompleteMe'
 Plug 'chrisbra/unicode.vim'
 " Plugins for terminal usage
 Plug 'voldikss/vim-floaterm'
@@ -55,6 +58,25 @@ Plug 'voldikss/vim-floaterm'
 call plug#end()                         " end pligin section; all plugins are above
 
 filetype plugin indent on               " required
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+"  Rust Settings                               "
+""""""""""""""""""""""""""""""""""""""""""""""""
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+else
+    inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 "  Airline settings                            "

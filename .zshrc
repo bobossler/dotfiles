@@ -16,6 +16,7 @@ HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
+setopt EXTENDED_HISTORY
 
 # Use modern completion system
 autoload -Uz compinit
@@ -87,7 +88,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fortune | cowthink -w -n
 
 # display a random colorscript
-colorscript random
+#colorscript random
 
 # adding a line for the Starship prompt
 # might want to disable the prompt stuff at the top of this file
