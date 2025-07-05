@@ -80,7 +80,7 @@ keys = [
     Key([mod, "shift"], "r", lazy.reload_config(), desc='Reload the config'),
     Key([mod, "control"], "r", lazy.restart, desc='Restart Qtile'),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([], 'F11', lazy.group['sp1'].dropdown_toggle('mc')),
+    Key([], 'F11', lazy.group['sp1'].dropdown_toggle('term')),
     Key([], 'F12', lazy.group['sp2'].dropdown_toggle('ranger'))
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
@@ -95,7 +95,7 @@ groups = [Group("1"),
           Group("8", matches=[Match(wm_class=["mpv"])]),
           Group("9"),
           ScratchPad("sp1", [
-              DropDown("mc", "alacritty -e 'mc'", height=0.6, opacity=1) ]),
+              DropDown("term", "alacritty", height=0.6, opacity=1) ]),
           ScratchPad("sp2", [
               DropDown("ranger", "alacritty -e 'ranger'", height=0.6, opacity=1) ])
          ]
@@ -196,7 +196,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.CurrentLayoutIcon(
                     background = colors[1],

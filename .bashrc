@@ -121,6 +121,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # display a Fortune upon opening a new terminal session
 # also using cowsay/cowthink for fun
 fortune | cowthink -w -n
@@ -131,7 +133,5 @@ fortune | cowthink -w -n
 # adding a line for the Starship prompt
 # may want to comment out the prompt settings above
 eval "$(starship init bash)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 . "$HOME/.cargo/env"

@@ -35,7 +35,7 @@ Plug 'tmsvg/pear-tree'
 Plug 'ap/vim-css-color'
 " Plugins for Rust
 Plug 'rust-lang/rust.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 " Plug 'ycm-core/YouCompleteMe'
 Plug 'chrisbra/unicode.vim'
@@ -101,6 +101,14 @@ let g:NERDTreeWinSize = 40
 let NERDTreeNaturalSort = 1
 let NERDTreeRespectWildIgnore = 1
 let NERDTreeMinimalUI = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+"  NetRW settings                              "
+""""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_keepdir = 0
+let g:netrw_winsize = 30
+let g:netrw_banner = 0
+let g:netrw_localcopydircmd = 'cp -r'
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "  VimWiki settings                           "

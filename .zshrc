@@ -7,7 +7,7 @@
 setopt histignorealldups sharehistory
 
 # Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+#bindkey -e
 
 # Keep 15000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=15000
@@ -19,6 +19,7 @@ setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 
 # Use modern completion system
+fpath+=~/.zsh
 autoload -Uz compinit
 compinit
 
@@ -75,6 +76,13 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# Functions to create a few aliases for zellij
+function zr () { zellij run --name "$*" -- zsh -ic "$*";}
+function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
+function ze () { zellij edit "$*";}
+function zef () { zellij edit --floating "$*";}
+
+# Source the zsh auto suggestions and completions
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
