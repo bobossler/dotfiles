@@ -102,3 +102,7 @@ fortune | cowthink -w -n
 # might want to disable the prompt stuff at the top of this file
 eval "$(starship init zsh)"
 
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/bobossler/.local/bin:$PATH"

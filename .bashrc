@@ -135,3 +135,7 @@ fortune | cowthink -w -n
 eval "$(starship init bash)"
 
 . "$HOME/.cargo/env"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/bobossler/.local/bin:$PATH"

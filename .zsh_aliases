@@ -24,7 +24,6 @@ alias cm='cm.sh'   #cmatrix with random colors
 alias df='df -h'
 alias free='free -h'
 alias myip="curl http://ipecho.net/plain; echo"
-alias neo='neofetch'
 alias mkdir='mkdir --parents --verbose'
 
 # Quick weather forecasts
@@ -39,10 +38,7 @@ alias dopilx='curl -s https://radar.weather.gov/ridge/standard/KILX_loop.gif >! 
 alias doplot='curl -s https://radar.weather.gov/ridge/standard/KLOT_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
 alias doppah='curl -s https://radar.weather.gov/ridge/standard/KPAH_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
 
-# Nordvpn quick commands
-alias vpnc='nordvpn connect'
-alias vpnd='nordvpn disconnect'
-alias vpns='nordvpn status'
+# Emacs quick commands
 alias emacs="emacsclient -c -a 'emacs'&"
 
 # Add a fortune to the clear command
@@ -70,18 +66,9 @@ sed -i "s/X-GNOME-Autostart-enabled=true/X-GNOME-Autostart-enabled=false/" /home
 echo "Pop Shop disabled"
 killall io.elementary.appcenter'
 
-alias popshopon='
-sed -i "s/X-GNOME-Autostart-enabled=false/X-GNOME-Autostart-enabled=true/" /home/$USER/.config/autostart/io.elementary.appcenter-daemon.desktop
-echo "Pop Shop enabled"
-nohup io.elementary.appcenter -s >/dev/null 2>&1 &'
-
 # A few package aliases
 alias saupdate='sudo apt update'
 alias saupgrade='sudo apt upgrade'
 alias aptup='sudo apt update && sudo apt upgrade'
 alias aptlistup='apt list --upgradeable'
 alias mydots='/usr/bin/git --git-dir=/home/bobossler/.dotfiles --work-tree=/home/bobossler'
-alias nalaup='sudo nala update && sudo nala upgrade'
-alias nalaupd='sudo nala update && nala list --upgradeable'
-alias nalaupg='sudo nala upgrade'
-alias nalaar='sudo nala autoremove'

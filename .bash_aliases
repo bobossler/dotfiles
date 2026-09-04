@@ -12,14 +12,13 @@ alias la='exa -a --icons --color=always --group-directories-first'   # all files
 alias ll='exa -l --icons --color=always --group-directories-first'   # long list
 alias lt='exa -aT --icons --color=always --group-directories-first'  # tree list
 alias l.='exa -a | egrep "^\."'                                      # only dots
-alias lr='exa -alr --sort=modified --icons --color=always'           # reverse by modified
+alias lr='exa -al --sort=modified --icons --color=always'            # by modified
 
 # Misc stuff
 alias cm='cm.sh'   #cmatrix with random color
 alias df='df -h'
 alias free='free -h'
 alias myip="curl http://ipecho.net/plain; echo"
-alias neo='neofetch'
 
 # Quick weather forecasts
 alias qf='curl wttr.in/60504?u'
@@ -28,13 +27,10 @@ alias qfmdw='curl wttr.in/MDW?u'
 alias qmoon='curl wttr.in/moon'
 
 # Doppler radar loops - ILX=Central IL, LOT=Chicago
-alias dopilx='curl -s https://radar.weather.gov/ridge/lite/KILX_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
-alias doplot='curl -s https://radar.weather.gov/ridge/lite/KLOT_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias dopilx='curl --output /tmp/doppler.gif https://radar.weather.gov/ridge/lite/KILX_loop.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias doplot='curl --output /tmp/doppler.gif https://radar.weather.gov/ridge/lite/KLOT_loop.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
 
-# Nordvpn quick commands
-alias vpnc='nordvpn connect'
-alias vpnd='nordvpn disconnect'
-alias vpns='nordvpn status'
+# Emacs quick commands
 alias emacs="emacsclient -c -a 'emacs'&"
 
 # Add a fortune to the clear command
@@ -58,6 +54,3 @@ alias saupdate='sudo apt update'
 alias saupgrade='sudo apt upgrade'
 alias aptlistup='apt list --upgradeable'
 alias mydots='/usr/bin/git --git-dir=/home/bobossler/.dotfiles --work-tree=/home/bobossler'
-alias nalaupd='sudo nala update && nala list --upgradeable'
-alias nalaupg='sudo nala upgrade'
-alias nalaar='sudo nala autoremove'
