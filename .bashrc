@@ -130,12 +130,15 @@ fortune | cowthink -w -n
 # display a random colorscript
 #colorscript random
 
-# adding a line for the Starship prompt
-# may want to comment out the prompt settings above
-eval "$(starship init bash)"
-
+# setup rust env
 . "$HOME/.cargo/env"
 
+# setup go env
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Added by Antigravity CLI installer
 export PATH="/home/bobossler/.local/bin:$PATH"
+
+# adding a line for the Starship prompt
+# may want to comment out the prompt settings above
+eval "$(starship init bash)"
