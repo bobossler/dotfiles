@@ -1,15 +1,8 @@
-# Set up the prompt
+# Ensure unique PATH entries
+typeset -U PATH path
 
-#autoload -Uz promptinit
-#promptinit
-#prompt adam1 red yellow magenta
-
+# History options
 setopt histignorealldups sharehistory
-
-# Use emacs keybindings even if our EDITOR is set to vi
-#bindkey -e
-
-# Keep 15000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=15000
 SAVEHIST=15000
 HISTFILE=~/.zsh_history
@@ -24,48 +17,36 @@ autoload -Uz compinit
 compinit
 
 # Prompts for confirmation after 'rm *' etc
-# Helps avoid mistakes like 'rm * o' when 'rm *.o' was intended
 setopt RM_STAR_WAIT
 
-# Don't write over existing files with >, use  >! instead
+# Don't write over existing files with >, use >! or >| instead
 setopt NOCLOBBER
 
-#  Enable color support of 'ls' and add aliases
+# Enable color support and grep aliases
 if [[ "$TERM" != "dumb" ]]; then
-    if [[ -x `which dircolors 2> /dev/null` ]]; then
-        eval `dircolors -b`
-        alias 'ls=ls --color=auto'
-        alias 'dir=dir --color=auto'
-        alias 'vdir=vdir --color=auto'
+    if (( $+commands[dircolors] )); then
+        eval "$(dircolors -b)"
         alias 'grep=grep --color=auto'
         alias 'fgrep=fgrep --color=auto'
         alias 'egrep=egrep --color=auto'
     fi
 fi
 
-# Setup some static named directories
-# In effect, creating shortcuts to long path names
+# Setup static named directories (shortcuts to long path names)
 hash -d acmedir=~/Projects/hugosite/acme-corporation
 hash -d grampsdir=~/Projects/gramps
 
-# Alias definitions.
-# I have my additional aliases in a separate file named
-# ~/.zsh_aliases, instead of adding them here directly.
-# This makes them more portable.
+# Alias definitions (kept in separate file for portability)
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
 
+# Completion configuration
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select=long
@@ -76,20 +57,16 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# Functions to create a few aliases for zellij
+# Functions for zellij
 function zr () { zellij run --name "$*" -- zsh -ic "$*";}
 function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
 function ze () { zellij edit "$*";}
 function zef () { zellij edit --floating "$*";}
 
-# Source the zsh auto suggestions and completions
+# Source zsh auto suggestions, syntax highlighting, and fzf
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Neofetch is a cool tool for dislaying system info
-# turning it off while i research an issue
-# neofetch
 
 # display a Fortune upon opening a new terminal session
 # also using cowsay/cowthink for fun
@@ -98,12 +75,10 @@ fortune | cowthink -w -n
 # display a random colorscript
 #colorscript random
 
-# setup go env
-export PATH="$PATH:$(go env GOPATH)/bin"
-
-# Added by Antigravity CLI installer
-export PATH="/home/bobossler/.local/bin:$PATH"
-
-# adding a line for the Starship prompt
-# might want to disable the prompt stuff at the top of this file
+# Initialize Starship prompt
 eval "$(starship init zsh)"
+
+# NVM (Node Version Manager) setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

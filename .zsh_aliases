@@ -1,12 +1,7 @@
 # Alias definitions
-# I am keeping them separate from my main .zshrc file for portability
+# Keeping them in a separate file for portability across shells
 
-# some more ls aliases
-# alias ll='ls -AlFh --color=auto'
-# alias la='ls -A --color=auto'
-# alias l='ls -CF --color=auto'
-
-# trying out exa as a replacement for ls
+# exa replacement for ls
 alias ls='exa -al --icons --color=always --group-directories-first'  # preferred
 alias la='exa -a --icons --color=always --group-directories-first'   # all files & dirs
 alias ll='exa -l --icons --color=always --group-directories-first'   # long list
@@ -14,29 +9,28 @@ alias lt='exa -aT --icons --color=always --group-directories-first'  # tree list
 alias l.='exa -a | egrep "^\."'                                      # only dots
 alias lr='exa -al -s newest --icons --color=always'                  # reverse by modified
 
-# other useful aliases
-#
-# Reload zsh after changes to .zshrc or .zsh_aliases
+# Shell reload aliases
+alias breload='. ~/.bashrc'
 alias zreload='. ~/.zshrc'
 
 # Misc stuff
-alias cm='cm.sh'   #cmatrix with random colors
+alias cm='cm.sh'   # cmatrix with random color
 alias df='df -h'
 alias free='free -h'
 alias myip="curl http://ipecho.net/plain; echo"
 alias mkdir='mkdir --parents --verbose'
 
 # Quick weather forecasts
-alias qf='curl wttr.in/60504'
-alias qford='curl wttr.in/ORD'
-alias qfmdw='curl wttr.in/MDW'
+alias qf='curl wttr.in/60504?u'
+alias qford='curl wttr.in/ORD?u'
+alias qfmdw='curl wttr.in/MDW?u'
 alias qmoon='curl wttr.in/moon'
 
 # Doppler radar loops - ILX=Central IL, LOT=Chicago
-alias dopconus='curl -s https://radar.weather.gov/ridge/standard/CONUS_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
-alias dopilx='curl -s https://radar.weather.gov/ridge/standard/KILX_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
-alias doplot='curl -s https://radar.weather.gov/ridge/standard/KLOT_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
-alias doppah='curl -s https://radar.weather.gov/ridge/standard/KPAH_loop.gif >! /tmp/doppler.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias dopconus='curl -s -o /tmp/doppler.gif https://radar.weather.gov/ridge/standard/CONUS_loop.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias dopilx='curl -s -o /tmp/doppler.gif https://radar.weather.gov/ridge/standard/KILX_loop.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias doplot='curl -s -o /tmp/doppler.gif https://radar.weather.gov/ridge/standard/KLOT_loop.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
+alias doppah='curl -s -o /tmp/doppler.gif https://radar.weather.gov/ridge/standard/KPAH_loop.gif && ffplay -loglevel quiet -loop 0 /tmp/doppler.gif'
 
 # Emacs quick commands
 alias emacs="emacsclient -c -a 'emacs'&"
@@ -66,7 +60,7 @@ sed -i "s/X-GNOME-Autostart-enabled=true/X-GNOME-Autostart-enabled=false/" /home
 echo "Pop Shop disabled"
 killall io.elementary.appcenter'
 
-# A few package aliases
+# Package management aliases
 alias saupdate='sudo apt update'
 alias saupgrade='sudo apt upgrade'
 alias aptup='sudo apt update && sudo apt upgrade'
